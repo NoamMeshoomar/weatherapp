@@ -1,0 +1,14 @@
+.Favorites {
+    margin-top: 20px;
+    width: var(--default-width);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 20px;
+}
+
+@media screen and (max-width: 640px) {
+    .Favorites {
+        padding: 0 20px;
+        width: 100vw;
+    }
+}

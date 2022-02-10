@@ -1,0 +1,23 @@
+.FavoriteCard {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.FavoriteCard h3 {
+    margin-bottom: 10px;
+}
+
+.FavoriteCard:hover {
+    background-color: black;
+    color: white;
+}
