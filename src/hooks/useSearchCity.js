@@ -11,14 +11,21 @@ const useSearchCity = (searchQuery) => {
     const {addToast} = useToasts();
 
     const fetchCity = async () => {
-        const {data} = await axios.get(`/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${searchQuery}`);
-        if(!data.length) {
-            addToast("City not found!", {
+        try {
+            const response = await axios.get(`/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${searchQuery}`);
+            if(!response.data.length) {
+                addToast("City not found!", {
+                    appearance: "error",
+                    autoDismiss: true
+                });
+            }
+            setCity(response.data[0]);
+        } catch (err) {
+            addToast("The allowed number of requests has been exceeded.", {
                 appearance: "error",
                 autoDismiss: true
             });
         }
-        setCity(data[0]);
     }
 
     useEffect(() => {

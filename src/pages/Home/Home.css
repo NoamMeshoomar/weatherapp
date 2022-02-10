@@ -28,10 +28,8 @@
     font-size: 18px;
     font-weight: 400;
     font-family: 'Rubik', sans-serif;
-    border: none;
+    border: 1px solid black;
     border-radius: 50px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    background-color: var(--lightblue-color);
 }
 
 @media screen and (max-width: 380px) {

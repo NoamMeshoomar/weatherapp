@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faRegStar } from "@fortawesome/free-regular-svg-icons";
 
 import Loading from "../Loading/Loading";
 
 import useWeatherDetails from "../../hooks/useWeatherDetails";
+import useCheckFavorite from "../../hooks/useCheckFavorite";
 
 import { updateFavorites } from "../../actions/favoritesActions";
 
@@ -13,11 +15,11 @@ import "./WeatherDetails.css";
 
 const WeatherDetails = () => {
     const location = useSelector((state) => state.weather.location);
-    const favorites = useSelector((state) => state.favorites.favorites);
 
     const dispatch = useDispatch();
 
     const [details, loading] = useWeatherDetails(location?.locationKey);
+    const isFavorite = useCheckFavorite(location?.locationKey);
 
     const handleAddToFavorite = () => {
         dispatch(updateFavorites({
@@ -39,7 +41,7 @@ const WeatherDetails = () => {
                         </div>
                     </div>
                     <div className="favorite-btn" onClick={handleAddToFavorite}>
-                        <FontAwesomeIcon icon={faHeart} color={favorites.find(favorite => favorite.id === location.locationKey) ? "var(--lightblue-color)" : "black"} size="2x" />
+                        <FontAwesomeIcon icon={isFavorite ? faStar : faRegStar} color={isFavorite ? "#edc10c" : "black"} size="2x" />
                     </div>
                 </div>
                 <h1 className="weather-text">{details.WeatherText}</h1>
