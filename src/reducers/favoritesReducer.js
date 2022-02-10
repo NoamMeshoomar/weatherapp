@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-    favorites: JSON.parse(localStorage.getItem("favorites")).reverse() || []
+    favorites: JSON.parse(localStorage.getItem("favorites"))?.reverse() || []
 }
 
 const favoritesReducer = (state = INITIAL_STATE, action) => {
