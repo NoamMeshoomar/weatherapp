@@ -13,9 +13,7 @@ const store = createStore(combinedReducers/*, window.__REDUX_DEVTOOLS_EXTENSION_
 
 ReactDOM.render(
     <Provider store={store}>
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
+        <App />
     </Provider>,
     document.getElementById('root')
 );

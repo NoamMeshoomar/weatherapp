@@ -15,6 +15,7 @@ import "./Home.css";
 
 const Home = () => {
     const searchQuery = useSelector((state) => state.weather.searchQuery);
+
     const dispatch = useDispatch();
 
     const location = useLocation();
@@ -31,7 +32,7 @@ const Home = () => {
         if(location.state?.query) {
             dispatch(updateSearchQuery(location.state.query));
         }
-    }, [location.state?.query]);
+    }, [location.state?.query, dispatch]);
 
     useEffect(() => {
         if(city) {
@@ -58,7 +59,7 @@ const Home = () => {
         <div className="Home">
             <div className="search-container">
                 <FontAwesomeIcon className="search-icon" icon={faSearch} />
-                <input className="search-input" type="text" value={searchQuery} onChange={(e) => handleSearch(e.target.value)} />
+                <input className="search-input" type="text" placeholder="Search city" value={searchQuery} onChange={(e) => handleSearch(e.target.value)} />
             </div>
             <WeatherDetails />
         </div>

@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-    searchQuery: "tel aviv",
+    searchQuery: "",
     location: null,
     weatherDetails: null,
 }
